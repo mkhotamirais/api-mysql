@@ -6,11 +6,13 @@ import cors from "cors";
 // run();
 
 import v1Router from "./v1/router.js";
+import { corsOptions, credentials } from "./mw.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(credentials);
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

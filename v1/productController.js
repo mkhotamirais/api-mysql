@@ -29,7 +29,7 @@ export const readProductById = async (req, res) => {
   try {
     const [data] = await db.query("SELECT * FROM Product WHERE id = ?", [id]);
     if (data.length === 0) return res.status(400).json({ error: `Product id ${id} not found` });
-    res.status(200).json(data);
+    res.status(200).json(data[0]);
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: error.message });
